@@ -1,5 +1,7 @@
 const express = require("express");
 const cors = require("cors");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 const { connectToDb, getDb } = require("./db");
 
 const app = express();
@@ -20,63 +22,28 @@ connectToDb((err) => {
 });
 
 // ------------------ Home Route ------------------
-
 app.get("/", (req, res) => {
   res.send("Welcome to the Book API!");
 });
 
 // ------------------ All Books Routes ------------------
 
-// GET all books with pagination, sorting, and search
+// GET all books
 app.get("/books", async (req, res) => {
   const db = getDb();
-  const {
-    page = 1,
-    limit = 5,
-    sort = "title",
-    order = "asc",
-    search = "",
-  } = req.query;
-  const offset = (page - 1) * limit;
-  const validFields = ["title", "author", "avg_rating"];
-  const validOrder = order === "asc" ? "ASC" : "DESC";
-
-  if (!validFields.includes(sort)) {
-    return res.status(400).json({ error: "Invalid field to sort by" });
-  }
-
-  let searchQuery = `%${search.toLowerCase()}%`;
-  let booksQuery = `
-    SELECT * FROM books 
-    WHERE LOWER(title) LIKE $1 OR LOWER(author) LIKE $1 
-    ORDER BY ${sort} ${validOrder} 
-    LIMIT $2 OFFSET $3
-  `;
-  let countQuery = `
-    SELECT COUNT(*) FROM books 
-    WHERE LOWER(title) LIKE $1 OR LOWER(author) LIKE $1
-  `;
-
   try {
-    const result = await db.query(booksQuery, [searchQuery, limit, offset]);
-    const countResult = await db.query(countQuery, [searchQuery]);
-
-    res.json({
-      totalBooks: countResult.rows[0].count,
-      books: result.rows,
-    });
+    const result = await db.query("SELECT * FROM books");
+    res.json(result.rows);
   } catch (error) {
+    console.error("Error fetching books:", error);
     res.status(500).json({ error: "Failed to retrieve books" });
   }
 });
-
-// ------------------ Filters/Search Routes ------------------
 
 // GET a book by ID
 app.get("/books/:id", async (req, res) => {
   const db = getDb();
   const { id } = req.params;
-
   try {
     const result = await db.query("SELECT * FROM books WHERE id = $1", [id]);
     if (result.rows.length > 0) {
@@ -84,39 +51,33 @@ app.get("/books/:id", async (req, res) => {
     } else {
       res.status(404).json({ error: "Book not found" });
     }
-  } catch (err) {
-    res
-      .status(500)
-      .json({ error: "An error occurred while fetching the book" });
+  } catch (error) {
+    console.error("Error fetching book:", error);
+    res.status(500).json({ error: "Failed to retrieve the book" });
   }
 });
-
-// ------------------ Add Routes ------------------
 
 // POST a new book
 app.post("/books", async (req, res) => {
   const db = getDb();
   const { title, author, shelves, avg_rating } = req.body;
-
   try {
     const result = await db.query(
       "INSERT INTO books (title, author, shelves, avg_rating) VALUES ($1, $2, $3, $4) RETURNING *",
       [title, author, shelves, avg_rating]
     );
     res.status(201).json(result.rows[0]);
-  } catch (err) {
+  } catch (error) {
+    console.error("Error adding book:", error);
     res.status(500).json({ error: "Could not add the book" });
   }
 });
-
-// ------------------ Update Routes ------------------
 
 // PUT to update a book by ID
 app.put("/books/:id", async (req, res) => {
   const db = getDb();
   const { id } = req.params;
   const { title, author, shelves, avg_rating } = req.body;
-
   try {
     const result = await db.query(
       "UPDATE books SET title = $1, author = $2, shelves = $3, avg_rating = $4 WHERE id = $5 RETURNING *",
@@ -127,18 +88,16 @@ app.put("/books/:id", async (req, res) => {
     } else {
       res.status(404).json({ error: "Book not found" });
     }
-  } catch (err) {
+  } catch (error) {
+    console.error("Error updating book:", error);
     res.status(500).json({ error: "Could not update the book" });
   }
 });
-
-// ------------------ Delete Routes ------------------
 
 // DELETE a book by ID
 app.delete("/books/:id", async (req, res) => {
   const db = getDb();
   const { id } = req.params;
-
   try {
     const result = await db.query("DELETE FROM books WHERE id = $1", [id]);
     if (result.rowCount > 0) {
@@ -146,7 +105,73 @@ app.delete("/books/:id", async (req, res) => {
     } else {
       res.status(404).json({ error: "Book not found" });
     }
-  } catch (err) {
+  } catch (error) {
+    console.error("Error deleting book:", error);
     res.status(500).json({ error: "Could not delete the book" });
   }
+});
+
+// ------------------ Users Routes ------------------
+
+// POST login
+app.post("/login", async (req, res) => {
+  const { username, password } = req.body;
+
+  try {
+    const db = getDb();
+    const result = await db.query("SELECT * FROM users WHERE username = $1", [
+      username,
+    ]);
+    const user = result.rows[0];
+
+    if (user && bcrypt.compareSync(password, user.password_hash)) {
+      const token = jwt.sign({ userId: user.id }, "your_jwt_secret_key", {
+        expiresIn: "1h",
+      });
+      res.json({ token });
+    } else {
+      res.status(401).json({ message: "Invalid username or password" });
+    }
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+// POST register
+app.post("/register", async (req, res) => {
+  const { username, password } = req.body;
+
+  try {
+    const db = getDb();
+
+    // Hash the password
+    const hashedPassword = bcrypt.hashSync(password, 10);
+
+    // Insert the new user
+    const result = await db.query(
+      "INSERT INTO users (username, password_hash, created_at) VALUES ($1, $2, NOW()) RETURNING *",
+      [username, hashedPassword]
+    );
+
+    res.json({ success: true, message: "User registered successfully" });
+  } catch (error) {
+    if (error.code === "23505") {
+      res.status(400).json({ message: "Username already in use" });
+    } else {
+      res.status(500).json({ message: "Server error" });
+    }
+  }
+});
+
+// ------------------ Error Handling ------------------
+
+// Handle invalid routes
+app.use((req, res) => {
+  res.status(404).json({ error: "Route not found" });
+});
+
+// Handle errors
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ error: "Something went wrong" });
 });
