@@ -5,32 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Book Library</title>
-    <link rel="stylesheet" href="styles.css" />
-    <style>
-        .welcome-message {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 1.2rem;
-            background-color: #c6c8bb;
-            padding: 10px;
-            border-radius: 5px;
-        }
-
-        .logout-btn {
-            padding: 8px 12px;
-            font-size: 1rem;
-            background-color: #c6c8bb;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            margin-left: 20px;
-        }
-
-        .logout-btn:hover {
-            background-color: #b5b7a3;
-        }
-    </style>
+    <link rel="stylesheet" href="dashboardStyles.css" />
+    
 </head>
 
 <body>
