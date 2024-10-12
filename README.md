@@ -4,7 +4,7 @@ Welcome to the **Lil-Library**! Follow these simple steps to get the application
 
 ## 🛠 What You Will Need Installed
 
-- ✅ **XAMPP Control Panel** (for PHP and MySQL server)
+- ✅ **XAMPP Control Panel** (for PHP)
 - ✅ **VS Code** (for code editing)
 - ✅ **Node.js** (for running the API)
 
