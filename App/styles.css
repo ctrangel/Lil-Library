@@ -156,3 +156,25 @@ h1 {
   background-repeat: no-repeat;
   background-position: center;
 }
+
+.add-btn {
+  padding: 15px;
+  font-size: 1rem;
+  background-color: #09d119;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  margin-bottom: 10px; 
+}
+
+.add-form {
+  font-style: initial;
+  font-size:larger;
+  margin: auto;
+  text-align: center;
+  text-decoration-line: initial;
+  border-radius: 20px;
+  background-color: #dee0d2; 
+  
+}

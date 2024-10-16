@@ -46,6 +46,20 @@
         <button class="search-btn" type="submit">Search</button>
     </form>
 
+    <!--  Adding Book Data to the Lil-Library -->
+     <form method="POST" action="" class="add-form">
+        <label for ="title">Title: </label> <br>
+        <input type = "text" class="add-form" id = "title" name="title"> <br><br>
+        <label for ="author">Author: </label> <br>
+        <input type = "text" class ="add-form" id = "author" name="author"> <br><br>
+        <label for ="shelves">Shelves: </label> <br>
+        <input type = "text" class = "add-form" id ="add-form" id = "shelves" name="shelves"> <br><br>
+        <label for ="average-rating">Avg. Rating: </label> <br>
+        <input type = "text" class = "add-form" id = "average-rating" name="average-rating"> <br><br>
+
+        <button class="add-btn" type="submit">Add Book</button>
+     </form>
+
     <?php
     $booksPerPage = 5;
     $currentPage = isset($_GET['page']) ? intval($_GET['page']) : 1;
