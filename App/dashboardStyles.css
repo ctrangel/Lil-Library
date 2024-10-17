@@ -4,7 +4,7 @@ body {
   color: #000000;
   margin: 0;
   padding: 0;
-  background-image: url("/Website/lilLibrary/media/hfn210qr.bmp");
+  background-image: url("/project/Lil-Library/App/media/hfn210qr.bmp");
 }
 h1 {
   text-align: center;
@@ -261,7 +261,7 @@ select {
   margin: 0 auto;
   height: 300px;
   width: 300px;
-  background-image: url("/Website/lilLibrary/media/n1att21p.bmp");
+  background-image: url("/project/Lil-Library/App/media/n1att21p.bmp");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
