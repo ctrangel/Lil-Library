@@ -26,14 +26,20 @@ $username = isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username'
 </head>
 
 <body>
-    <div class="welcome-message">
-        Welcome,<span id="username-display"><?php echo $username; ?></span>!
-
-        <form method="POST" action="">
+    <nav class="menu">
+        <div class="welcome-message">
+            Welcome, <span id="username-display"><?php echo $username; ?></span>!
+        </div>
+        <ul class="menu-list">
+            <li><a href="dashboard.php">Home</a></li>
+            <li><a href="myBooks.php">My Books</a></li>
+            <li><a href="browseBooks.php">Browse</a></li>
+        </ul>
+        <form method="POST" action="" class="logout-form">
             <button type="submit" name="logout" class="logout-btn">Logout</button>
         </form>
+    </nav>
 
-    </div>
 
     <h1>Lil Library</h1>
 
