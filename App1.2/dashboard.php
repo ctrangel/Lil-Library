@@ -1,5 +1,6 @@
 <?php
-session_start();
+    session_start();
+    ob_start();
 
 // Check if the user is not logged in
 
@@ -39,7 +40,6 @@ $username = isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username'
             <button type="submit" name="logout" class="logout-btn">Logout</button>
         </form>
     </nav>
-
 
     <h1>Lil Library</h1>
 
@@ -144,6 +144,7 @@ $username = isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username'
         session_unset();
         session_destroy();
         header('Location: landingPage.php');
+        ob_end_flush(); 
         exit();
     }
 
