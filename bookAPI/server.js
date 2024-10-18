@@ -163,6 +163,66 @@ app.post("/register", async (req, res) => {
   }
 });
 
+// Post User books
+
+// POST: Add book to user's library
+app.post("/userBooks", async (req, res) => {
+  const db = getDb();
+  const { username, bookId } = req.body;
+
+  try {
+    // Get the user ID based on the username
+    const userResult = await db.query("SELECT id FROM users WHERE username = $1", [username]);
+    if (userResult.rows.length === 0) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    const userId = userResult.rows[0].id;
+
+    // Insert the user-book relation into the user_books table
+    const result = await db.query(
+      "INSERT INTO user_books (user_id, book_id) VALUES ($1, $2) RETURNING *",
+      [userId, bookId]
+    );
+    res.status(201).json(result.rows[0]);
+  } catch (error) {
+    console.error("Error adding book to user's library:", error);
+    res.status(500).json({ error: "Could not add book to library" });
+  }
+});
+
+// GET: Get all books in user's library
+
+app.get("/userBooks", async (req, res) => {
+  const db = getDb();
+  const { username } = req.query;
+
+  try {
+    // Get user ID based on the username
+    const userResult = await db.query("SELECT id FROM users WHERE username = $1", [username]);
+    if (userResult.rows.length === 0) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    const userId = userResult.rows[0].id;
+
+    // Fetch books for this user
+    const result = await db.query(
+      `SELECT books.* FROM books
+       JOIN user_books ON books.id = user_books.book_id
+       WHERE user_books.user_id = $1`,
+      [userId]
+    );
+
+    res.json(result.rows);
+  } catch (error) {
+    console.error("Error fetching user's books:", error);
+    res.status(500).json({ error: "Could not retrieve user's books" });
+  }
+});
+
+
+
 // ------------------ Error Handling ------------------
 
 // Handle invalid routes

@@ -1,6 +1,6 @@
 <?php
-    session_start();
-    ob_start();
+session_start();
+ob_start();
 
 // Check if the user is not logged in
 
@@ -114,6 +114,65 @@ $username = isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username'
         </select>
     </div>
 
+    <h2>Add a New Book</h2>
+
+    <!-- Add Book Form -->
+    <form method="POST" action="dashboard.php">
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" class="form-control" id="title" name="title" placeholder="Enter book title" required>
+        </div>
+        <div class="form-group">
+            <label for="author">Author:</label>
+            <input type="text" class="form-control" id="author" name="author" placeholder="Enter author name" required>
+        </div>
+        <div class="form-group">
+            <label for="shelves">Shelves:</label>
+            <input type="text" class="form-control" id="shelves" name="shelves" placeholder="Enter shelves category" required>
+        </div>
+        <div class="form-group">
+            <label for="avg_rating">Average Rating:</label>
+            <input type="number" step="0.1" class="form-control" id="avg_rating" name="avg_rating" placeholder="Enter average rating" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Book</button>
+    </form>
+
+    <?php
+    // Handle book addition (POST request)
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $title = htmlspecialchars($_POST['title']);
+        $author = htmlspecialchars($_POST['author']);
+        $shelves = htmlspecialchars($_POST['shelves']);
+        $avg_rating = floatval($_POST['avg_rating']);
+
+        // Data to send to the API
+        $postData = [
+            'title' => $title,
+            'author' => $author,
+            'shelves' => $shelves,
+            'avg_rating' => $avg_rating
+        ];
+
+        // Set up the request to your API
+        $options = [
+            'http' => [
+                'header'  => "Content-type: application/json\r\n",
+                'method'  => 'POST',
+                'content' => json_encode($postData),
+            ],
+        ];
+
+        $context  = stream_context_create($options);
+        $result = file_get_contents('http://localhost:4000/books', false, $context);
+
+        if ($result === FALSE) {
+            echo '<p>Failed to add the book.</p>';
+        } else {
+            echo '<p>Book added successfully!</p>';
+        }
+    }
+    ?>
+
     <!-- <script>
         // Check if token exists and display username
         document.addEventListener('DOMContentLoaded', function() {
@@ -144,7 +203,7 @@ $username = isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username'
         session_unset();
         session_destroy();
         header('Location: landingPage.php');
-        ob_end_flush(); 
+        ob_end_flush();
         exit();
     }
 

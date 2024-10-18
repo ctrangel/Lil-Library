@@ -1,0 +1,72 @@
+/* Color scheme */
+:root {
+    --main-bg-color: #f4f1ea;
+    --main-border-color: #c6c8bb;
+    --main-hover-color: #b5b7a3;
+    --card-bg-color: #dee0d2;
+}
+
+/* Search Input */
+#search {
+    width: 50%; /* More reasonable width */
+    padding: 0.75rem;
+    border: 1px solid var(--main-border-color);
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    margin: 0 auto; /* Centering */
+    display: block;
+}
+
+#search:focus {
+    outline: none;
+    border-color: var(--main-hover-color);
+    box-shadow: 0 0 5px var(--main-hover-color);
+}
+
+/* Search Results Styling */
+.search-results {
+    max-height: 250px;
+    overflow-y: auto;
+    background-color: #fff;
+    border: 1px solid var(--main-border-color);
+    border-radius: 0.25rem;
+    z-index: 1000;
+    width: 50%; /* Same width as search bar */
+    margin: 0 auto; /* Centering */
+    position: relative;
+    display: none; /* Hidden by default */
+}
+
+.search-results div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: var(--card-bg-color);
+    border-bottom: 1px solid var(--main-border-color);
+}
+
+.search-results div:hover {
+    background-color: var(--main-hover-color);
+}
+
+#addBookBtn {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    background-color: var(--main-border-color);
+    border: none;
+    border-radius: 0.375rem;
+    margin-top: 15px;
+    color: #fff;
+    cursor: pointer;
+    display: none;
+    transition: background-color 0.3s ease;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#addBookBtn:hover {
+    background-color: var(--main-hover-color);
+    transform: scale(1.02);
+}
+
