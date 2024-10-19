@@ -89,6 +89,7 @@ $username = isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username'
         echo '<div class="book-author">' . $book['author'] . '</div>';
         echo '<div class="book-shelves"><strong>Shelves:</strong> ' . $book['shelves'] . '</div>';
         echo '<div class="book-rating"><strong>Avg Rating:</strong> ' . $book['avg_rating'] . '</div>';
+        echo '<button class="delete-btn" data-id="' . $book['id'] . '">Delete</button>'; 
         echo '</div>';
     }
     echo '</div>';

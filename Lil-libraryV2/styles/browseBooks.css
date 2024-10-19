@@ -1,0 +1,75 @@
+
+
+.controls {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.controls button {
+  background-color: #c6c8bb;
+  border: none;
+  padding: 10px;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.controls button:hover {
+  background-color: #c6c8bb73;
+}
+
+.controls button:disabled {
+  background-color: #f0f0f0;
+  cursor: not-allowed;
+}
+
+.controls span {
+  font-size: 1rem;
+  font-family: "Merriweather", serif;
+  color: white;
+}
+
+.sort-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  border: none;
+
+}
+
+.sort-controls select {
+  padding: 10px;
+  font-size: 1rem;
+  margin: 10px;
+  border: none;
+  background-color: #c6c8bb;
+ 
+}
+
+.sort-controls select:focus {
+  outline: none;
+}
+
+.sort-controls button {
+  background-color: #c6c8bb;
+  border: none;
+  padding: 10px;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.sort-controls button:hover {
+  background-color: #c6c8bb73;
+}
+
+.sort-controls label {
+  font-size: 1rem;
+  font-family: "Merriweather", serif;
+  color: white;
+}

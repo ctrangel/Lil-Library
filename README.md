@@ -39,7 +39,7 @@ Head over to the project repository and either **Download** or **Clone** it to y
 ### 5. 🌐 Run the Application
 - Now you can run the application locally! 🎉
 - Open your browser and go to:  
-  `localhost/lib-library/App/landingPage.php`.
+  `localhost/lil-library/lil-libraryV2/landingPage.php`. the newest edition
 
 ### 6. 🔐 Create or Sign In to Your Account
 At the **landing page**, you can either **create a new account** or **sign in** if you already have one.
