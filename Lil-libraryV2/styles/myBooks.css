@@ -1,0 +1,231 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap");
+
+body {
+  background: #f4f1ea;
+  font-family: "Merriweather", serif !important;
+  background-image: url("/Lil-libraryV2/media/hfn210qr.bmp"); /* update accordingly */
+  background-size: cover;
+  color: #000000;
+  margin: 0;
+  padding: 0;
+}
+
+.intro {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-top: 20px;
+  background-color: #c6c8bb;
+  padding: 10px;
+  border-radius: 10px;
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.intro p {
+  font-size: 1rem;
+  margin: 0;
+  color: black;
+}
+
+h2 {
+  text-align: center;
+  margin-top: 1rem;
+  color: white;
+  font-family: "Merriweather", serif !important;
+}
+
+h3 {
+  text-align: center;
+  margin-top: 1rem;
+  color: white;
+  font-family: "Merriweather", serif !important;
+}
+
+/* Search Input */
+#search {
+  width: 50%; /* More reasonable width */
+  padding: 0.75rem;
+  border: 1px solid var(--main-border-color);
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  margin: 0 auto; /* Centering */
+  display: block;
+}
+
+#search:focus {
+  outline: none;
+  border-color: var(--main-hover-color);
+  box-shadow: 0 0 5px var(--main-hover-color);
+}
+
+/* Search Results Styling */
+.search-results {
+  max-height: 250px;
+  overflow-y: auto;
+  background-color: #fff;
+  border: 1px solid var(--main-border-color);
+  border-radius: 0.25rem;
+  z-index: 1000;
+  width: 50%; /* Same width as search bar */
+  margin: 0 auto; /* Centering */
+  position: relative;
+  display: none; /* Hidden by default */
+}
+
+
+
+.search-results div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: var(--card-bg-color);
+  border-bottom: 1px solid var(--main-border-color);
+}
+
+.search-results div:hover {
+  background-color: var(--main-hover-color);
+}
+
+#addBookBtn {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  background-color: var(--main-border-color);
+  border: none;
+  border-radius: 0.375rem;
+  margin-top: 15px;
+  color: #fff;
+  cursor: pointer;
+  display: none;
+  transition: background-color 0.3s ease;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+#addBookBtn:hover {
+  background-color: var(--main-hover-color);
+  transform: scale(1.02);
+}
+
+.book-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  height: auto;
+}
+
+.delete-btn {
+  width: 100px;
+  color: black;
+  padding: 10px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#search-bar-add-label {
+  display: block;
+  margin: 0 auto;
+  margin-top: 20px;
+  font-size: 1.5rem;
+  color: white;
+}
+
+.search-add-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+   
+    height: auto;
+}
+
+#addBookForm {
+  width: 50%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #c6c8bb;
+  border-radius: 10px;
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#addBookForm label {
+  font-size: 1.5rem;
+  color: black;
+}
+
+.search-custom-library {
+    width: 50%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #c6c8bb;
+    border-radius: 10px;
+    display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+    margin-bottom: 20px;
+}
+
+.search-custom-library label {
+  font-size: 1.5rem;
+  color: black;
+}
+
+.search-custom-library input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--main-border-color);
+  border-radius: 0.25rem;
+  font-size: 1rem;
+}
+
+.search-custom-library input:focus {
+  outline: none;
+  border-color: var(--main-hover-color);
+  box-shadow: 0 0 5px var(--main-hover-color);
+}
+
+.search-custom-library button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  background-color: var(--main-border-color);
+  border: none;
+  border-radius: 0.375rem;
+  margin-top: 15px;
+  color: black;
+  cursor: pointer;
+  display: none;
+  transition: background-color 0.3s ease;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.oh-no-no-books {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 1.5rem;
+    color: black;
+    background-color: #c6c8bb;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 0 auto;
+}
