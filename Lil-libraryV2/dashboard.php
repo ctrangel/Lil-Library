@@ -271,14 +271,6 @@ select {
   background-color: #c6c8bb73;
 }
 
-.form-input 
-{
-  width: 100 %;
-  box-sizing: border-box; 
-  padding: 20px;
-  border: 2px solid white;
-
-}
 
 #pageInfo {
   display: inline-block;
@@ -338,16 +330,38 @@ select {
 }
 
 .news-btn {
+
   padding: 10px;
   font-size: 1rem;
   background-color: limegreen;
-  right: 100px;
+  right: 100px; 
   position: fixed;
   padding: 20px;
   border: none;
   cursor: pointer;
   border-radius: 5px;
   transition: background-color 0.3s;
+  
+}
+
+.newsform-container
+{
+  display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+}
+
+.newsform-container.show{
+  display: flex;
+  opacity: 1;
 }
 
 .no-results {
@@ -515,6 +529,104 @@ nav.menu {
     color: #443f33;
 }
 
+
+
+        /*
+        .btn-open-popup:hover {
+            background-color: #4caf50;
+        }
+            */
+
+        .overlay-container {
+            display: none;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-box {
+            background: #fff;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+            width: 320px;
+            text-align: center;
+            opacity: 0;
+            transform: scale(0.8);
+            animation: fadeInUp 0.5s ease-out forwards;
+        }
+
+        .form-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-label {
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #444;
+            text-align: left;
+        }
+
+        .form-input {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .btn-submit,
+        .close {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .btn-submit {
+            background-color: green;
+            color: #fff;
+        }
+
+        .close {
+            position:fixed;
+            top:10px;
+            right:10px;
+            background-color: grey;
+            color: white;
+        }
+
+        .btn-submit:hover,
+        .close:hover {
+            background-color: #4caf50;
+        }
+
+        /* Animations */
+       
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .overlay-container.show {
+            display: flex;
+            opacity: 1;
+        }
+
+
     </style>
     <link rel="stylesheet" href="Lil-Library/Lil-libraryV2//styles/homeStyles.css" /> <!-- Update the path accordingly -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -539,36 +651,35 @@ nav.menu {
 
     <h1>Lil Library</h1>
 
-    <button class="news-btn" onclick="togglePopUp()">SignUp For Newsletter</button>
-
-    <div id = "popUpOverlay"
-    class = "newsletterInfo">
-
-    <div class="box-popup">
-
-  <h4>Enter Info to Enter Newsletter Form</h4>
+    <button class="news-btn" onclick="togglePopup()">SignUp For Newsletter</button>
 
 
-  <label>Email: </label>
-  <input class="form-input" type="text" id="email" name="email" required>
+    <div id="popupOverlay" 
+         class="overlay-container">
+        <div class="popup-box">
+            <h2 style="color: green;">Enter Email to Receive Newsletter Forms</h2>
+            <form class="form-container" method="post" action = "emailScript.php">
 
-  <button class = "news-btn" type="submit"> SignUp </button>
+                <label class="form-label"  for="email">Email:</label>
+                <input class="form-input"
+                       type="email" 
+                       id="email" 
+                       name="email" required>
 
+                <button class="btn-submit" 
+                        type="submit">
+                  Sign Up
+                  </button>
+            </form>
+
+            <button class="close" 
+                    onclick="togglePopup()">
+              X
+              </button>
+        </div>
     </div>
-
-<!-- X close 
-content: "\00d7";
--->
   
-    <form>
-    <label>Enter Info to Enter Newsletter Form</label>
 
-    <label>Email: </label>
-    <input class="form-input" type="text" id="email" name="email" required>
-
-    <button type="submit" onclick="togglePopUp()">Sign Up</button>
-
-    </form>
 
   </div>
 
@@ -671,6 +782,7 @@ content: "\00d7";
 
 
     <script>
+
         document.querySelectorAll('.delete-btn').forEach(button => {
             button.addEventListener('click', function() {
                 const bookId = this.getAttribute('data-id');
