@@ -251,7 +251,7 @@ include 'navbar.php';
     </section>
 
     <script>
-        document.querySelectorAll('.delete-btn').forEach(button => {
+        document.querySelectorAll('#delete-btn').forEach(button => {
             button.addEventListener('click', function() {
                 const bookId = this.getAttribute('data-id');
 
