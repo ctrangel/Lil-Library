@@ -17,6 +17,7 @@ $username = isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username'
 
 <!DOCTYPE html>
 <html lang="en">
+<script src="./javascript/newsPopUp.js"></script>
 
 <head>
     <meta charset="UTF-8" />
@@ -177,10 +178,37 @@ h1 {
   font-size: 0.9rem;
   margin-top: 5px;
 }
+
+.box-popup 
+{
+  background:white;
+  text-align: center;
+  animation:forwards;#452f24;
+  width: 550px;
+
+}
+
+.container {
+  dispaly: flex;
+  flex-direction:column-reverse;
+}
+
 .controls {
   text-align: center;
   margin: 20px 0;
 }
+
+.form-input
+{
+  padding: 10px;
+  margin-bttom: 20px;
+  border: 1px solid #d3c7b5;
+  border-radius: 8px;
+  font-size: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .pagination {
   display: inline-block;
   margin: 0 10px;
@@ -243,6 +271,15 @@ select {
   background-color: #c6c8bb73;
 }
 
+.form-input 
+{
+  width: 100 %;
+  box-sizing: border-box; 
+  padding: 20px;
+  border: 2px solid white;
+
+}
+
 #pageInfo {
   display: inline-block;
   margin: 20px;
@@ -300,6 +337,19 @@ select {
   transition: background-color 0.3s;
 }
 
+.news-btn {
+  padding: 10px;
+  font-size: 1rem;
+  background-color: limegreen;
+  right: 100px;
+  position: fixed;
+  padding: 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
 .no-results {
   text-align: center;
   margin: 20px;
@@ -334,6 +384,24 @@ nav.menu {
   align-items: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 0 0 10px 10px;
+}
+
+.newsletterinfo
+{
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.newsletterinfo.show
+{
+  display: flex;
+  opacity: 1;
 }
 
 .menu-list {
@@ -470,6 +538,39 @@ nav.menu {
     </nav>
 
     <h1>Lil Library</h1>
+
+    <button class="news-btn" onclick="togglePopUp()">SignUp For Newsletter</button>
+
+    <div id = "popUpOverlay"
+    class = "newsletterInfo">
+
+    <div class="box-popup">
+
+  <h4>Enter Info to Enter Newsletter Form</h4>
+
+
+  <label>Email: </label>
+  <input class="form-input" type="text" id="email" name="email" required>
+
+  <button class = "news-btn" type="submit"> SignUp </button>
+
+    </div>
+
+<!-- X close 
+content: "\00d7";
+-->
+  
+    <form>
+    <label>Enter Info to Enter Newsletter Form</label>
+
+    <label>Email: </label>
+    <input class="form-input" type="text" id="email" name="email" required>
+
+    <button type="submit" onclick="togglePopUp()">Sign Up</button>
+
+    </form>
+
+  </div>
 
     <form method="GET" action="" class="search-bar">
         <input class="search-input" type="text" name="search" placeholder="Search books..." value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>" />
@@ -704,6 +805,9 @@ nav.menu {
                 }
             });
         });
+
+
+
     </script>
 
     <!-- <script>

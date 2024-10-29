@@ -329,7 +329,7 @@ textarea {
             const adminPassword = document.getElementById('admin_password').value;
             const usertype = document.getElementById('login_usertype').v;
 
-
+                
             fetch('http://localhost/Lil-Library/Lil-libraryV2/adminLogin.php', {
                     method: 'POST',
                     headers: {
