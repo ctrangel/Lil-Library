@@ -8,7 +8,7 @@
 
 
 #### Fails
-image::\SAST Scan Documentation/images/Lil-libraryV3/Add_Books_Fail.PNG
+image::SAST Scan Documentation/images/Lil-libraryV3/Add_Books_Fail.PNG
 image::images\Lil-libraryV3\Add_Books_Fail_2.png[alt=logout,width=500px] [orientation=portrait]
 
 #### Success
