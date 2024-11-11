@@ -19,6 +19,8 @@ image::images\ImageFolderTest\Browse_Books_Fail_2.PNG[alt=Browse_Books_Fail_2,wi
 image::images\ImageFolderTest\Browse_Books_Fail_3.PNG[alt=Browse_Books_Fail,width=500px] [orientation=portrait]
 
 #### Success
+image::images\ImageFolderTest\Browse_Books_Fix_1.png[alt=Browse_Books_Fix_1,width=500px] [orientation=portrait]
+image::images\ImageFolderTest\Browse_Books_Fix_2.PNG[alt=Browse_Books_Fix_2,width=500px] [orientation=portrait]
 image::images\ImageFolderTest\Browse_Books_Success.PNG[alt=Browse_Books_Success,width=500px] [orientation=portrait]
 
 ### contactAdmin.php
@@ -34,10 +36,9 @@ image::images\ImageFolderTest\Dashboard_Fail_2.PNG[alt=Dashboard_Fail_2,width=50
 image::images\ImageFolderTest\Dashboard_Fail_3.PNG[alt=Dashboard_Fail_3,width=500px] [orientation=portrait]
 
 #### Success
-image::images\ImageFolderTest\Dashboard_Fix_1.PNG[alt=Dashboard_Fix_1,width=500px] [orientation=portrait]
-image::images\ImageFolderTest\Dashboard_Fix_2.PNG[alt=Dashboard_Fix_2,width=500px] [orientation=portrait]
-image::images\ImageFolderTest\Dashboard_Fix_3.PNG[alt=Dashboard_Fix_3,width=500px] [orientation=portrait]
-image::images\ImageFolderTest\Dashboard_Success.PNG[alt=Dashboard_Success,width=500px] [orientation=portrait]
+image::images\ImageFolderTest\Dashboard_Fix_1.png[alt=Dashboard_Fix_1,width=500px] [orientation=portrait]
+image::images\ImageFolderTest\Dashboard_Fix_2.png[alt=Dashboard_Fix_2,width=500px] [orientation=portrait]
+image::images\ImageFolderTest\Dashboard_Success.png[alt=Dashboard_Success,width=500px] [orientation=portrait]
 
 
 ### deleteBooks.php
@@ -68,7 +69,7 @@ image::images\ImageFolderTest\Login_Fail 2.PNG[alt=Login_Fail 2,width=500px] [or
 image::images\ImageFolderTest\Login_Fail 3.PNG[alt=Login_Fail 3,width=500px] [orientation=portrait]
 
 #### Success
-image::images\ImageFolderTest\Login_Success.PNG[alt=Login_Success,width=500px] [orientation=portrait]
+image::images\ImageFolderTest\Login_Success.png[alt=Login_Success,width=500px] [orientation=portrait]
 
 
 ### login_handler.php
@@ -89,7 +90,7 @@ image::images\ImageFolderTest\My_Books_Fail_2.PNG[alt=My_Books_Fail_2,width=500p
 image::images\ImageFolderTest\My_Books_Fail_3.PNG[alt=My_Books_Fail_3,width=500px] [orientation=portrait]
 
 #### Success
-image::images\ImageFolderTest\My_Books_Success.PNG[alt=Dashboard_Fix_3,width=500px] [orientation=portrait]
+image::images\ImageFolderTest\My_Books_Success.png[alt=Dashboard_Fix_3,width=500px] [orientation=portrait]
 
 
 ### navbar.php
