@@ -101,7 +101,7 @@ image::images\ImageFolderTest\News_Letter_Template_Success.PNG[alt=News_Letter_T
 ### db.php
 
 #### Fails
-image::images\bookAPI-PHP\DB_Fail_1.png[alt=logout,width=500px] [orientation=portrait]
+image::images\ImageFolderTest\bookAPI-PHP\DB_Fail_1.png[alt=DB_Fail,width=500px] [orientation=portrait]
 
 image::images\bookAPI-PHP\DB_Fail_2.png[alt=logout,width=500px] [orientation=portrait]
 
