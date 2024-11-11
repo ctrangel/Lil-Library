@@ -103,23 +103,22 @@ image::images\ImageFolderTest\News_Letter_Template_Success.PNG[alt=News_Letter_T
 #### Fails
 image::images\ImageFolderTest\bookAPI-PHP\DB_Fail_1.PNG[alt=DB_Fail,width=500px] [orientation=portrait]
 
-image::images\bookAPI-PHP\DB_Fail_2.png[alt=logout,width=500px] [orientation=portrait]
+image::images\ImageFolderTest\bookAPI-PHP\DB_Fail_2.PNG[alt=DB_Fail2,width=500px] [orientation=portrait]
 
 #### Success 
 
 ### index.php
 
 #### Fails
-image::images\bookAPI-PHP\Index_Fail_1.png[alt=logout,width=500px] [orientation=portrait]
-image::images\bookAPI-PHP\Index_Fail_2.png[alt=logout,width=500px] [orientation=portrait]
-image::images\bookAPI-PHP\Index_Fail_3.png[alt=logout,width=500px] [orientation=portrait]
-
+image::images\ImageFolderTest\bookAPI-PHP\Index_Fail_1.PNG[alt=Index_Fail_1, width=500px] [orientation=portrait]
+image::images\ImageFolderTest\bookAPI-PHP\Index_Fail_2.PNG[alt=Index_Fail_2, width=500px] [orientation=portrait]
+image::images\ImageFolderTest\bookAPI-PHP\Index_Fail_3.PNG[alt=Index_Fail_3, width=500px] [orientation=portrait]
 #### Success 
 
 ### login.php
 
 #### Fails
-image::images\bookAPI-PHP\Login_Fail_3.png[alt=logout,width=500px] [orientation=portrait]
+image::images\ImageFolderTest\bookAPI-PHP\Login_Fail.PNG[alt=Login_Fail, width=500px] [orientation=portrait]
 
 #### Success
 // ***************************************************************
