@@ -20,7 +20,7 @@ image::images\ImageFolderTest\Browse_Books_Fail_3.PNG[alt=Browse_Books_Fail,widt
 
 #### Success
 image::images\ImageFolderTest\Browse_Books_Fix_1.png[alt=Browse_Books_Fix_1,width=500px] [orientation=portrait]
-image::images\ImageFolderTest\Browse_Books_Fix_2.PNG[alt=Browse_Books_Fix_2,width=500px] [orientation=portrait]
+image::images\ImageFolderTest\Browse_Books_Fix_2.png[alt=Browse_Books_Fix_2,width=500px] [orientation=portrait]
 image::images\ImageFolderTest\Browse_Books_Success.PNG[alt=Browse_Books_Success,width=500px] [orientation=portrait]
 
 ### contactAdmin.php
