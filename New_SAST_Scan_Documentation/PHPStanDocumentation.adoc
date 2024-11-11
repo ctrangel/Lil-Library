@@ -92,6 +92,54 @@ image::images\ImageFolderTest\News_Letter_Template_Line.PNG[alt=News_Letter_Temp
 #### Success
 image::images\ImageFolderTest\News_Letter_Template_Success.PNG[alt=News_Letter_Template_Success,width=500px] [orientation=portrait]
 
+// ***************************************************************
+
+## bookAPI-PHP
+
+### db.php
+
+#### Fails
+image::images\bookAPI-PHP\DB_Fail_1.png[alt=logout,width=500px] [orientation=portrait]
+
+image::images\bookAPI-PHP\DB_Fail_2.png[alt=logout,width=500px] [orientation=portrait]
+
+#### Success 
+
+### index.php
+
+#### Fails
+image::images\bookAPI-PHP\Index_Fail_1.png[alt=logout,width=500px] [orientation=portrait]
+image::images\bookAPI-PHP\Index_Fail_2.png[alt=logout,width=500px] [orientation=portrait]
+image::images\bookAPI-PHP\Index_Fail_3.png[alt=logout,width=500px] [orientation=portrait]
+
+#### Success 
+
+### login.php
+
+#### Fails
+image::images\bookAPI-PHP\Login_Fail_3.png[alt=logout,width=500px] [orientation=portrait]
+
+#### Success
+// ***************************************************************
+
+## MailTest
+
+### email-script.php
+
+#### Fails
+image::images\MailTest\email-script_fail.png[alt=logout,width=500px] [orientation=portrait]
+image::images\MailTest\email-script_fail2.png[alt=logout,width=500px] [orientation=portrait]
+image::images\MailTest\email-script_fail3.png[alt=logout,width=500px] [orientation=portrait]
+image::images\MailTest\email-script_fail4.png[alt=logout,width=500px] [orientation=portrait]
+
+#### Success
+
+### index.php
+
+#### Success
+image::images\MailTest\Index_Success.png[alt=logout,width=500px] [orientation=portrait]
+// ***************************************************************
+
 
 
 
