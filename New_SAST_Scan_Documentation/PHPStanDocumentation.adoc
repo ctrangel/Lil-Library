@@ -128,17 +128,17 @@ image::images\ImageFolderTest\bookAPI-PHP\Login_Fail.PNG[alt=Login_Fail, width=5
 ### email-script.php
 
 #### Fails
-image::images\MailTest\email-script_fail.png[alt=logout,width=500px] [orientation=portrait]
-image::images\MailTest\email-script_fail2.png[alt=logout,width=500px] [orientation=portrait]
-image::images\MailTest\email-script_fail3.png[alt=logout,width=500px] [orientation=portrait]
-image::images\MailTest\email-script_fail4.png[alt=logout,width=500px] [orientation=portrait]
+image::images\ImageFolderTest\MailTest\email-script_fail.PNG[alt=email-script_fail,width=500px] [orientation=portrait]
+image::images\ImageFolderTest\MailTest\email-script_fail2.PNG[alt=email-script_fail2,width=500px] [orientation=portrait]
+image::images\ImageFolderTest\MailTest\email-script_fail3.PNG[alt=email-script_fail3,width=500px] [orientation=portrait]
+image::images\ImageFolderTest\MailTest\email-script_fail4.PNG[alt=email-script_fail4,width=500px] [orientation=portrait]
 
 #### Success
 
 ### index.php
 
 #### Success
-image::images\MailTest\Index_Success.png[alt=logout,width=500px] [orientation=portrait]
+image::images\ImageFolderTest\MailTest\Index_Success.PNG[alt=email-script_fail4,width=500px] [orientation=portrait]
 // ***************************************************************
 
 
