@@ -245,6 +245,54 @@ include 'navbar.php';
                     </div>
                 </div>
             </section>
+        <!-- ---------------------------------------------------------------------------------------------------------------------------------->
+               <!-- Add Book Section -->
+               <section class="section">
+                <div class="container">
+                    <div class="columns is-centered">
+                        <div class="column is-half">
+                            <h2 class="title is-4 add-header has-text-centered">Add Book Metrics</h2>
+
+                            <!-- Add Book Form -->
+                            <form class="box main-library-book-add" id="addMetricForm">
+                                <div class="field">
+                                    <label class="label" for="id">ID</label>
+                                    <div class="control">
+                                        <input type="text" class="input" id="id" name="id" placeholder="Enter ID" required>
+                                    </div>
+                                </div>
+
+                                <div class="field">
+                                    <label class="label" for="author">Read Time</label>
+                                    <div class="control">
+                                        <input type="text" class="input" id="read_time" name="read_time" placeholder="Enter Read Time" required>
+                                    </div>
+                                </div>
+
+                                <div class="field">
+                                    <label class="label" for="shelves">Page Length</label>
+                                    <div class="control">
+                                        <input type="text" class="input" id="page_length" name="page_length" placeholder="Enter Page Length of Book" required>
+                                    </div>
+                                </div>
+
+                                <div class="field">
+                                    <label class="label" for="avg_rating">Book Rating</label>
+                                    <div class="control">
+                                        <input type="number" step="0.1" class="input" id="avg_rating" name="avg_rating" placeholder="Enter average rating" required>
+                                    </div>
+                                </div>
+
+                                <div class="field is-grouped is-grouped-centered">
+                                    <div class="control">
+                                        <button type="submit" class="button is-primary">Add Book Metrics</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
 
         </container>
