@@ -1,0 +1,168 @@
+# Group_Assign 10 SAST Scan
+
+// ***************************************************************
+## Lil-libraryV3
+
+
+### addBook.php
+
+
+#### Fails
+image::images\Lil-libraryV3\Add_Books_Fail.png[alt=logout,width=500px] [orientation=portrait]
+image::images\Lil-libraryV3\Add_Books_Fail_2.png[alt=logout,width=500px] [orientation=portrait]
+
+#### Success
+image::images\Lil-libraryV3\Add_Books_Success.png[alt=logout,width=500px] [orientation=portrait] 
+
+### browseBooks.php
+
+#### Fails
+image::images\Lil-libraryV3\Browse_Books_Fail.png[alt=logout,width=500px] [orientation=portrait] 
+image::images\Lil-libraryV3\Browse_Books_Fail_2.png[alt=logout,width=500px] [orientation=portrait] 
+image::images\Lil-libraryV3\Browse_Books_Fail_3.png[alt=logout,width=500px] [orientation=portrait] 
+
+#### Success 
+image::images\Lil-libraryV3\Browse_Books_Success.png[alt=logout,width=500px] [orientation=portrait] 
+
+### contactAdmin.php
+
+#### Fails
+image::images\Lil-libraryV3\Contact_Admin_Fail.png[alt=logout,width=500px] [orientation=portrait] 
+image::images\Lil-libraryV3\Contact_Admin_Line.png[alt=logout,width=500px] [orientation=portrait] 
+
+#### Success 
+image::images\Lil-libraryV3\Contact_Admin_Success.png[alt=logout,width=500px] [orientation=portrait] 
+
+### dashboard.php
+
+#### Fails
+image::images\Lil-libraryV3\Dashboard_Fail.png[alt=logout,width=500px] [orientation=portrait]
+image::images\Lil-libraryV3\Dashboard_Fail_2.png[alt=logout,width=500px] [orientation=portrait] 
+image::images\Lil-libraryV3\Dashboard_Fail_3.png[alt=logout,width=500px] [orientation=portrait]  
+
+#### Success 
+
+### deleteBook.php
+
+#### Fails
+image::images\Lil-libraryV3\Delete_Book_Fail.png[alt=logout,width=500px] [orientation=portrait] 
+image::images\Lil-libraryV3\Delete_Book_Fail_2.png[alt=logout,width=500px] [orientation=portrait] 
+
+
+#### Success 
+image::images\Lil-libraryV3\Delete_Book_Success.png[alt=logout,width=500px] [orientation=portrait] 
+
+### editBook.php
+
+#### Fails
+image::images\Lil-libraryV3\Edit_Book_Fail.png[alt=logout,width=500px] [orientation=portrait] 
+
+#### Success 
+
+### landingPage.php
+
+#### Fails
+
+#### Success 
+image::images\Lil-libraryV3\Landing_Page_Success.png[alt=logout,width=500px] [orientation=portrait] 
+
+### login.php
+
+#### Fails
+image::images\Lil-libraryV3\Login_Fail.png[alt=logout,width=500px] [orientation=portrait] 
+image::images\Lil-libraryV3\Login_Fail 2.png[alt=logout,width=500px] [orientation=portrait] 
+image::images\Lil-libraryV3\Login_Fail 3.png[alt=logout,width=500px] [orientation=portrait] 
+
+#### Success 
+
+### login_handler.php
+
+#### Success 
+image::images\Lil-libraryV3\Login_Handler_Success.png[alt=logout,width=500px] [orientation=portrait] 
+
+### logout.php
+
+#### Fails
+
+#### Success 
+image::images\Lil-libraryV3\Logout_Capture_Success.png[alt=logout,width=500px] [orientation=portrait]
+
+### myBooks.php
+
+#### Fails
+image::images\Lil-libraryV3\Navbar_Fail.png[alt=logout,width=500px] [orientation=portrait]
+image::images\Lil-libraryV3\Navbar_Fail2.png[alt=logout,width=500px] [orientation=portrait] 
+image::images\Lil-libraryV3\Navbar_Fail3.png[alt=logout,width=500px] [orientation=portrait]  
+
+#### Success 
+
+### navbar.php
+
+#### Fails
+image::images\Lil-libraryV3\Navbar_Fail.png[alt=logout,width=500px] [orientation=portrait] 
+
+#### Success 
+image::images\Lil-libraryV3\Navbar_Success.png[alt=logout,width=500px] [orientation=portrait] 
+
+### News_Letter_Template.php
+
+#### Fails
+image::images\Lil-libraryV3\News_Letter_Template_Fail.png[alt=logout,width=500px] [orientation=portrait] 
+image::images\Lil-libraryV3\News_Letter_Template_Line.png[alt=logout,width=500px] [orientation=portrait] 
+
+#### Success
+image::images\Lil-libraryV3\News_Letter_Template_Success.png[alt=logout,width=500px] [orientation=portrait] 
+
+// ***************************************************************
+
+## bookAPI-PHP
+
+### db.php
+
+#### Fails
+image::images\bookAPI-PHP\DB_Fail_1.png[alt=logout,width=500px] [orientation=portrait]
+
+image::images\bookAPI-PHP\DB_Fail_2.png[alt=logout,width=500px] [orientation=portrait]
+
+#### Success 
+
+### index.php
+
+#### Fails
+image::images\bookAPI-PHP\Index_Fail_1.png[alt=logout,width=500px] [orientation=portrait]
+image::images\bookAPI-PHP\Index_Fail_2.png[alt=logout,width=500px] [orientation=portrait]
+image::images\bookAPI-PHP\Index_Fail_3.png[alt=logout,width=500px] [orientation=portrait]
+
+#### Success 
+
+### login.php
+
+#### Fails
+image::images\bookAPI-PHP\Login_Fail_3.png[alt=logout,width=500px] [orientation=portrait]
+
+#### Success
+// ***************************************************************
+
+## MailTest
+
+### email-script.php
+
+#### Fails
+image::images\MailTest\email-script_fail.png[alt=logout,width=500px] [orientation=portrait]
+image::images\MailTest\email-script_fail2.png[alt=logout,width=500px] [orientation=portrait]
+image::images\MailTest\email-script_fail3.png[alt=logout,width=500px] [orientation=portrait]
+image::images\MailTest\email-script_fail4.png[alt=logout,width=500px] [orientation=portrait]
+
+#### Success
+
+### index.php
+
+#### Success
+image::images\MailTest\Index_Success.png[alt=logout,width=500px] [orientation=portrait]
+// ***************************************************************
+## PHPMailer
+
+### get_oauth_token.php
+// ***************************************************************
+
+### emailScript.php

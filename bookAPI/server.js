@@ -21,6 +21,15 @@ connectToDb((err) => {
   }
 });
 
+// Logging helper function
+const logUserActivity = async (userId, action, details = null) => {
+  const db = getDb();
+  await db.query(
+    "INSERT INTO user_activity_logging (user_id, action, details) VALUES ($1, $2, $3)",
+    [userId, action, details]
+  );
+};
+
 // ------------------ Home Route ------------------
 app.get("/", (req, res) => {
   res.send("Welcome to the Book API!");
@@ -94,7 +103,6 @@ app.put("/books/:id", async (req, res) => {
   }
 });
 
-
 // DELETE a book by ID
 app.delete("/books/:id", async (req, res) => {
   const db = getDb();
@@ -129,8 +137,11 @@ app.post("/login", async (req, res) => {
       const token = jwt.sign({ userId: user.id }, "your_jwt_secret_key", {
         expiresIn: "1h",
       });
+      await logUserActivity(user.id, "login", "User logged in successfully");
       res.json({ token });
     } else {
+      if (user)
+        await logUserActivity(user.id, "login_failed", "Incorrect password");
       res.status(401).json({ message: "Invalid username or password" });
     }
   } catch (error) {
@@ -144,16 +155,16 @@ app.post("/register", async (req, res) => {
 
   try {
     const db = getDb();
-
-    // Hash the password
     const hashedPassword = bcrypt.hashSync(password, 10);
-
-    // Insert the new user
     const result = await db.query(
       "INSERT INTO users (username, password_hash, created_at) VALUES ($1, $2, NOW()) RETURNING *",
       [username, hashedPassword]
     );
-
+    await logUserActivity(
+      result.rows[0].id,
+      "register",
+      "User registered successfully"
+    );
     res.json({ success: true, message: "User registered successfully" });
   } catch (error) {
     if (error.code === "23505") {
@@ -164,26 +175,30 @@ app.post("/register", async (req, res) => {
   }
 });
 
-// Post User books
-
 // POST: Add book to user's library
 app.post("/userBooks", async (req, res) => {
   const db = getDb();
   const { username, bookId } = req.body;
 
   try {
-    // Get the user ID based on the username
-    const userResult = await db.query("SELECT id FROM users WHERE username = $1", [username]);
+    const userResult = await db.query(
+      "SELECT id FROM users WHERE username = $1",
+      [username]
+    );
     if (userResult.rows.length === 0) {
       return res.status(404).json({ error: "User not found" });
     }
 
     const userId = userResult.rows[0].id;
-
-    // Insert the user-book relation into the user_books table
     const result = await db.query(
       "INSERT INTO user_books (user_id, book_id) VALUES ($1, $2) RETURNING *",
       [userId, bookId]
+    );
+
+    await logUserActivity(
+      userId,
+      "add_book",
+      `Added book with ID ${bookId} to library`
     );
     res.status(201).json(result.rows[0]);
   } catch (error) {
@@ -193,21 +208,20 @@ app.post("/userBooks", async (req, res) => {
 });
 
 // GET: Get all books in user's library
-
 app.get("/userBooks", async (req, res) => {
   const db = getDb();
   const { username } = req.query;
 
   try {
-    // Get user ID based on the username
-    const userResult = await db.query("SELECT id FROM users WHERE username = $1", [username]);
+    const userResult = await db.query(
+      "SELECT id FROM users WHERE username = $1",
+      [username]
+    );
     if (userResult.rows.length === 0) {
       return res.status(404).json({ error: "User not found" });
     }
 
     const userId = userResult.rows[0].id;
-
-    // Fetch books for this user
     const result = await db.query(
       `SELECT books.* FROM books
        JOIN user_books ON books.id = user_books.book_id
@@ -215,14 +229,17 @@ app.get("/userBooks", async (req, res) => {
       [userId]
     );
 
+    await logUserActivity(
+      userId,
+      "view_user_books",
+      "Viewed user's library books"
+    );
     res.json(result.rows);
   } catch (error) {
     console.error("Error fetching user's books:", error);
     res.status(500).json({ error: "Could not retrieve user's books" });
   }
 });
-
-
 
 // ------------------ Error Handling ------------------
 

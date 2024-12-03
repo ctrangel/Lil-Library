@@ -113,30 +113,42 @@ include 'navbar.php';
     $sortBy = isset($_GET['sort']) ? $_GET['sort'] : 'default';
     $searchQuery = isset($_GET['user_search']) ? strtolower(trim($_GET['user_search'])) : '';
 
- // Fetch user-specific books from the API
- $apiUrl = 'http://localhost:4000/userBooks?username=' . urlencode($username);
- $userBooksData = file_get_contents($apiUrl);
- $userBooksData = json_decode($userBooksData, true);
+    // Fetch user-specific books from the API
+    $apiUrl = 'http://localhost:4000/userBooks?username=' . urlencode($username);
+    $userBooksData = file_get_contents($apiUrl);
 
- // Filter books by user search query
- if ($searchQuery) {
-     $userBooksData = array_filter($userBooksData, function ($book) use ($searchQuery) {
-         return strpos(strtolower($book['title']), $searchQuery) !== false || strpos(strtolower($book['author']), $searchQuery) !== false;
-     });
- }
+    //Check if user books is a valid string
 
- // Sort books if needed
- if ($sortBy != 'default') {
-     usort($userBooksData, function ($a, $b) use ($sortBy) {
-         return strcmp($a[$sortBy], $b[$sortBy]);
-     });
- }
+    if (is_string($userBooksData))
+    {
+        $userBooksData = json_decode($userBooksData, true);
+    }
+    else
+    {
+        echo 'Error: Invalid JSON Data';
+    }
 
- // Pagination calculations
- $totalBooks = count($userBooksData);
- $totalPages = ceil($totalBooks / $booksPerPage);
- $startIndex = ($currentPage - 1) * $booksPerPage;
- $booksToShow = array_slice($userBooksData, $startIndex, $booksPerPage);
+    $userBooksData = json_decode($userBooksData, true);
+
+    // Filter books by user search query
+    if ((bool)$searchQuery) {
+        $userBooksData = array_filter($userBooksData, function ($book) use ($searchQuery) {
+            return strpos(strtolower($book['title']), $searchQuery) !== false || strpos(strtolower($book['author']), $searchQuery) !== false;
+        });
+    }
+
+    // Sort books if needed
+    if ($sortBy !== 'default') {
+        usort($userBooksData, function ($a, $b) use ($sortBy) {
+            return strcmp($a[$sortBy], $b[$sortBy]);
+        });
+    }
+
+    // Pagination calculations
+    $totalBooks = count($userBooksData);
+    $totalPages = ceil($totalBooks / $booksPerPage);
+    $startIndex = ($currentPage - 1) * $booksPerPage;
+    $booksToShow = array_slice($userBooksData, $startIndex, $booksPerPage);
 
     if ($totalBooks === 0) {
         echo '<div class="oh-no-no-books">';
