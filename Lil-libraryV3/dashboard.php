@@ -20,6 +20,92 @@ include 'navbar.php';
 <!DOCTYPE html>
 <html lang="en">
 
+<style>
+body {font-family: Arial, sans-serif;}
+* {box-sizing: border-box;}
+
+
+.chat-popup 
+{
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+
+.form-container 
+{
+  max-width: 300px;
+  padding: 10px;
+  background-color: gray;
+}
+
+
+.form-container textarea 
+{
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+  resize: none;
+  min-height: 200px;
+}
+
+
+.form-container textarea:focus 
+{
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Submit Button Style */
+.form-container .btn 
+{
+  background-color: #00ebc7;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+.dark-light-toggle .btnToggle
+{
+  background-color: rgba(0,0,0,0.5);
+  width: 10px;
+  height: 10px;
+  font-size: 10px;
+  display: inline;
+  margin: 0 auto;
+  padding: 2px;
+}
+
+.btnClose
+{
+    margin-left: 250px;
+}
+
+.dark-mode
+{
+  background-color: 14161a;
+  color: red;
+}
+
+.light-mode
+{
+  background-color: #808080;
+  color: blue;
+}
+
+
+</style>
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -298,7 +384,68 @@ include 'navbar.php';
         </container>
     </section>
 
+    <div class="chat-popup" id="Chatbot-Form">
+  <form action="" class="form-container">
+    <body>
+    <h1>ChatBot</h1> <button class="btnClose" onclick="closeForm()"><img src="icons/close.png"></i></button>
+
+    <!--
+    <button class="darkToggle" id="drkTog" onclick="DarkFunction()"><img src="icons/moon_icon.ico"></i></button>
+    <button class="lightToggle" id="lgtTog" onclick="LightFunction()"><img src="icons/sun_icon.ico"></i></button>
+
+        -->
+
+    <label for="question"><b>Lil-Assistant Here. How can I help you?</b></label>
+    <textarea placeholder="Type Your Question Here" name="question" required></textarea>
+
+    <button type="submit" id="buttonSend" class="btn">Send</button>
+  </body>
+  </form>
+</div>
+
     <script>
+
+function showChatBot()
+{
+
+    document.getElementById("Chatbot-Form").style.display="block";
+}
+
+setTimeout("showChatBot()", 10000);
+
+function openForm() {
+  document.getElementById("Chatbot-Form").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("Chatbot-Form").style.display = "none";
+}
+
+var x = document.getElementById("myAudio");
+
+function playAudio()
+{
+    const button = document.getElementById("buttonSend");
+    const audio = document.getElementById("notificationButtonSound");
+    
+}
+
+function DarkFunction() 
+{
+   var element = document.getElementById("Chatbot-Form");
+   element.classList.toggle("dark-mode");
+
+   const darkToggle = document.getElementById('darkToggle');
+   
+}
+
+function LightFunction() 
+{
+   var element = document.getElementById("Chatbot-Form");
+   element.classList.toggle("light-mode");
+}
+
+
         document.querySelectorAll('#delete-btn').forEach(button => {
             button.addEventListener('click', function() {
                 const bookId = this.getAttribute('data-id');
