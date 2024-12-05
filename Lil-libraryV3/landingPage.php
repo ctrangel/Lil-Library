@@ -24,7 +24,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lil Library | Log In</title>
-    <link rel="stylesheet" href="/Lil-LibraryV3/Lil-Library/Lil-LibraryV3/styles/loginStyles.css"> <!-- UPDATE ACCORDINGLY -->
+    <link rel="stylesheet" href="/Lil-Library/Lil-LibraryV3/styles/loginStyles.css"> <!-- UPDATE ACCORDINGLY -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- SweetAlert2 -->
     <!-- <script>
@@ -96,7 +96,7 @@ session_start();
             const username = document.getElementById('login_username').value;
             const password = document.getElementById('login_password').value;
 
-            fetch('http://localhost/Lil-LibraryV3/Lil-Library/Lil-libraryV3/login.php', {
+            fetch('http://localhost/Lil-Library/Lil-libraryV3/login.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
