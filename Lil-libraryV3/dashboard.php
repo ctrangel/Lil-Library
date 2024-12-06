@@ -333,7 +333,7 @@ body {font-family: Arial, sans-serif;}
                 </div>
             </section>
         <!-- ---------------------------------------------------------------------------------------------------------------------------------->
-               <!-- Add Book Section -->
+               <!-- Add Book Metrics Section -->
                <section class="section">
                 <div class="container">
                     <div class="columns is-centered">
@@ -341,7 +341,7 @@ body {font-family: Arial, sans-serif;}
                             <h2 class="title is-4 add-header has-text-centered">Add Book Metrics</h2>
 
                             <!-- Add Book Form -->
-                            <form class="box main-library-book-add" id="addMetricForm">
+                            <form class="box main-library-book-metric-add" id="addMetricForm">
                                 <div class="field">
                                     <label class="label" for="id">ID</label>
                                     <div class="control">
