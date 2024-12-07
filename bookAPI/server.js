@@ -37,6 +37,7 @@ app.get("/", (req, res) => {
 
 // ------------------ All Books Routes ------------------
 
+
 // GET all books
 app.get("/books", async (req, res) => {
   const db = getDb();
@@ -48,6 +49,8 @@ app.get("/books", async (req, res) => {
     res.status(500).json({ error: "Failed to retrieve books" });
   }
 });
+
+
 
 // GET a book by ID
 app.get("/books/:id", async (req, res) => {
@@ -117,6 +120,18 @@ app.delete("/books/:id", async (req, res) => {
   } catch (error) {
     console.error("Error deleting book:", error);
     res.status(500).json({ error: "Could not delete the book" });
+  }
+});
+
+// GET all metrics
+app.get("/book_metrics", async (req, res) => {
+  const db = getDb();
+  try {
+    const result = await db.query("SELECT * FROM book_metrics");
+    res.json(result.rows);
+  } catch (error) {
+    console.error("Error fetching book metrics:", error);
+    res.status(500).json({ error: "Failed to retrieve book metrics" });
   }
 });
 
