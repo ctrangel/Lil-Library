@@ -38,6 +38,7 @@ app.get("/", (req, res) => {
 // ------------------ All Books Routes ------------------
 
 
+
 // GET all books
 app.get("/books", async (req, res) => {
   const db = getDb();
@@ -132,6 +133,23 @@ app.get("/book_metrics", async (req, res) => {
   } catch (error) {
     console.error("Error fetching book metrics:", error);
     res.status(500).json({ error: "Failed to retrieve book metrics" });
+  }
+});
+
+
+// POST a new book metric
+app.post("/book_metrics", async (req, res) => {
+  const db = getDb();
+  const { id, read_time, page_length, book_rating } = req.body;
+  try {
+    const result = await db.query(
+      "INSERT INTO book_metrics (id, read_time, page_length, book_rating) VALUES ($1, $2, $3, $4) RETURNING *",
+      [id, read_time, page_length, book_rating]
+    );
+    res.status(201).json(result.rows[0]);
+  } catch (error) {
+    console.error("Error adding book metric:", error);
+    res.status(500).json({ error: "Could not add the book metric" });
   }
 });
 

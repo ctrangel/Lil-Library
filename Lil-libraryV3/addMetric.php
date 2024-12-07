@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ];
 
     $context  = stream_context_create($options);
-    $result = file_get_contents('http://localhost:4000/metrics', false, $context);
+    $result = file_get_contents('http://localhost:4000/book_metrics', false, $context);
 
     if ($result === FALSE) {
         echo json_encode(['error' => 'Failed to add book metrics']);
