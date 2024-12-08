@@ -196,6 +196,8 @@ body {font-family: Arial, sans-serif;}
             $booksData = file_get_contents($apiUrl);
             $booksData = json_decode($booksData, true);
 
+            
+
             if ($searchQuery) {
                 $booksData = array_filter($booksData, function ($book) use ($searchQuery) {
                     return strpos(strtolower($book['title']), $searchQuery) !== false || strpos(strtolower($book['author']), $searchQuery) !== false;
@@ -376,6 +378,11 @@ body {font-family: Arial, sans-serif;}
                                     </div>
                                 </div>
                             </form>
+
+                            <center>
+                            <button type="submit" class="button is-primary" onclick="window.location.href='viewMetrics.php'">View Book Metrics</button>
+                            </center>
+
                         </div>
                     </div>
                 </div>
@@ -545,6 +552,43 @@ function LightFunction()
                     console.error('Error:', error);
                 });
         });
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        document.getElementById('addMetricForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Get the form data
+            const formData = new FormData(this);
+            const jsonData = {};
+            formData.forEach((value, key) => {
+                jsonData[key] = value;
+            });
+
+            // Send data to addMetric.php via AJAX
+            fetch('addMetric.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(jsonData)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        Swal.fire('Error!', data.error, 'error');
+                    } else {
+                        Swal.fire('Success!', 'Book Metric added successfully!', 'success');
+                        //reload page
+                        setTimeout(() => {
+                            window.location.reload();
+                        }, 2000);
+                    }
+                })
+                .catch(error => {
+                    Swal.fire('Error!', 'Something went wrong.', 'error');
+                    console.error('Error:', error);
+                });
+        });
+
         document.querySelector('.logout-btn').addEventListener('click', function(event) {
             event.preventDefault(); // Prevent form submission
 
