@@ -1,30 +1,32 @@
 async function fetchMetricData()
 {
-    const response = await fetch('../fetchMetric.php');
+    const response = await fetch('fetchMetric.php');
     const data = await response.json();
     return data;
 }
+
+//id, read_time, page_length, book_rating
 
 async function renderChart()
 {
     const metricData = await fetchMetricData();
 
     //Processing Data
-    const labels = metricData.map(item => item.page_length + ' (' + new Date(item.created_at).toLocaleDateString() + ')');
-    const values = metricData.map(item => item.reading_time);
+    const labels = metricData.map(item => item.id + item.page_length);
+    const values = metricData.map(item => item.reading_time + item.book_rating);
 
     //Create Chart
     const ctx = document.getElementById('metricChart').getContext('2d');
     new Chart(ctx, {
-        type: 'grid',
+        type: 'doughnut',
         data: {
             labels: labels,
             datasets: [{
                 label: 'Book Metric Value',
                 data: values,
                 borderWidth: 1,
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                borderColor: 'rgba(75, 192, 192, 1)'
+                backgroundColor: grey,
+                borderColor: blue
             }]
         },
 

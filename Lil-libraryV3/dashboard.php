@@ -360,9 +360,9 @@ include 'actual_bot_logic.php';
                                 </div>
 
                                 <div class="field">
-                                    <label class="label" for="avg_rating">Book Rating</label>
+                                    <label class="label" for="book_rating">Book Rating</label>
                                     <div class="control">
-                                        <input type="number" step="0.1" class="input" id="avg_rating" name="avg_rating" placeholder="Enter average rating" required>
+                                        <input type="number" step="0.1" class="input" id="book_rating" name="book_rating" placeholder="Enter book rating" required>
                                     </div>
                                 </div>
 
