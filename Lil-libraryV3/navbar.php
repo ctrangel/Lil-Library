@@ -24,9 +24,6 @@ $username = $_SESSION['username'] ?? 'User'; // Ensure session is started at the
 
         <div class="navbar-end">
             <div class="navbar-item">
-                <iframe src="https://tunein.com/embed/player/s303481/" style="width:100%; height:100px;" scrolling="no" frameborder="no"></iframe>
-            </div>
-            <div class="navbar-item">
                 <iframe src="https://tunein.com/embed/player/s22142/" style="width:100%; height:100px;" scrolling="no" frameborder="no"></iframe>
             </div>
             <div class="navbar-item">
