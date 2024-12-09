@@ -22,89 +22,83 @@ include 'actual_bot_logic.php';
 <html lang="en">
 
 <style>
-body {font-family: Arial, sans-serif;}
-* {box-sizing: border-box;}
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
 
 
-.chat-popup 
-{
-  display: none;
-  position: fixed;
-  bottom: 0;
-  right: 15px;
-  border: 3px solid #f1f1f1;
-  z-index: 9;
-}
+    .chat-popup {
+        display: none;
+        position: fixed;
+        bottom: 0;
+        right: 15px;
+        border: 3px solid #f1f1f1;
+        z-index: 9;
+    }
 
 
-.form-container 
-{
-  max-width: 300px;
-  padding: 10px;
-  background-color: gray;
-}
+    .form-container {
+        max-width: 300px;
+        padding: 10px;
+        background-color: gray;
+    }
 
 
-.form-container textarea 
-{
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  border: none;
-  background: #f1f1f1;
-  resize: none;
-  min-height: 200px;
-}
+    .form-container textarea {
+        width: 100%;
+        padding: 15px;
+        margin: 5px 0 22px 0;
+        border: none;
+        background: #f1f1f1;
+        resize: none;
+        min-height: 200px;
+    }
 
 
-.form-container textarea:focus 
-{
-  background-color: #ddd;
-  outline: none;
-}
+    .form-container textarea:focus {
+        background-color: #ddd;
+        outline: none;
+    }
 
-/* Submit Button Style */
-.form-container .btn 
-{
-  background-color: #00ebc7;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  margin-bottom:10px;
-  opacity: 0.8;
-}
+    /* Submit Button Style */
+    .form-container .btn {
+        background-color: #00ebc7;
+        color: white;
+        padding: 16px 20px;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        margin-bottom: 10px;
+        opacity: 0.8;
+    }
 
-.dark-light-toggle .btnToggle
-{
-  background-color: rgba(0,0,0,0.5);
-  width: 10px;
-  height: 10px;
-  font-size: 10px;
-  display: inline;
-  margin: 0 auto;
-  padding: 2px;
-}
+    .dark-light-toggle .btnToggle {
+        background-color: rgba(0, 0, 0, 0.5);
+        width: 10px;
+        height: 10px;
+        font-size: 10px;
+        display: inline;
+        margin: 0 auto;
+        padding: 2px;
+    }
 
-.btnClose
-{
-    margin-left: 250px;
-}
+    .btnClose {
+        margin-left: 250px;
+    }
 
-.dark-mode
-{
-  background-color: 14161a;
-  color: red;
-}
+    .dark-mode {
+        background-color: 14161a;
+        color: red;
+    }
 
-.light-mode
-{
-  background-color: #808080;
-  color: blue;
-}
-
-
+    .light-mode {
+        background-color: #808080;
+        color: blue;
+    }
 </style>
 
 <head>
@@ -196,7 +190,7 @@ body {font-family: Arial, sans-serif;}
             $booksData = file_get_contents($apiUrl);
             $booksData = json_decode($booksData, true);
 
-            
+
 
             if ($searchQuery) {
                 $booksData = array_filter($booksData, function ($book) use ($searchQuery) {
@@ -334,9 +328,9 @@ body {font-family: Arial, sans-serif;}
                     </div>
                 </div>
             </section>
-        <!-- ---------------------------------------------------------------------------------------------------------------------------------->
-               <!-- Add Book Metrics Section -->
-               <section class="section">
+            <!-- ---------------------------------------------------------------------------------------------------------------------------------->
+            <!-- Add Book Metrics Section -->
+            <section class="section">
                 <div class="container">
                     <div class="columns is-centered">
                         <div class="column is-half">
@@ -380,7 +374,7 @@ body {font-family: Arial, sans-serif;}
                             </form>
 
                             <center>
-                            <button type="submit" class="button is-primary" onclick="window.location.href='viewMetrics.php'">View Book Metrics</button>
+                                <button type="submit" class="button is-primary" onclick="window.location.href='viewMetrics.php'">View Book Metrics</button>
                             </center>
 
                         </div>
@@ -391,67 +385,170 @@ body {font-family: Arial, sans-serif;}
 
         </container>
     </section>
+    <!-- <div class="chat-popup" id="Chatbot-Form">
+        <form action="" class="form-container">
 
-    <div class="chat-popup" id="Chatbot-Form">
-  <form action="" class="form-container">
-    <body>
-    <h1>ChatBot</h1> <button class="btnClose" onclick="closeForm()"><img src="icons/close.png"></i></button>
-
+            <body>
+                <h1>ChatBot</h1> <button class="btnClose" onclick="closeForm()"><img src="icons/close.png"></i></button>
+                <label for="question"><b>Lil-Librarian Here. How can I help you?</b></label>
+                <textarea placeholder="Type Your Question Here" name="question" required></textarea>
+                <button type="submit" id="buttonSend" class="btn">Send</button>
+            </body>
+        </form>
+    </div> -->
     <!--
     <button class="darkToggle" id="drkTog" onclick="DarkFunction()"><img src="icons/moon_icon.ico"></i></button>
     <button class="lightToggle" id="lgtTog" onclick="LightFunction()"><img src="icons/sun_icon.ico"></i></button>
 
         -->
 
-    <label for="question"><b>Lil-Assistant Here. How can I help you?</b></label>
-    <textarea placeholder="Type Your Question Here" name="question" required></textarea>
+    <div class="chat-popup" id="Chatbot-Form">
+        <form action="" class="form-container">
+            <h1>ChatBot</h1>
+            <button type="button" class="btnClose" onclick="closeForm()"><img src="icons/close.png"></button>
+            <label for="question"><b>Lil-Librarian Here. How can I help you?</b></label>
+            <textarea placeholder="Type your question here" name="question" required></textarea>
+            <button type="submit" class="btn">Send</button>
+        </form>
+        <div class="chat-area" style="background: #f1f1f1; padding: 10px; height: 200px; width: 400px; overflow-y: auto; margin-top: 10px;"></div>
+    </div>
 
-    <button type="submit" id="buttonSend" class="btn">Send</button>
-  </body>
-  </form>
-</div>
 
     <script>
+        document.querySelector('.form-container').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting traditionally
+            processInput();
+        });
 
-function showChatBot()
-{
+        document.querySelector('textarea[name="question"]').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter' && !event.shiftKey) {
+                event.preventDefault(); // Prevent the default action to avoid a newline
+                processInput(); // Process the input as if the form was submitted
+            }
+        });
 
-    document.getElementById("Chatbot-Form").style.display="block";
-}
+        function processInput() {
+            let textarea = document.querySelector('textarea[name="question"]');
+            let question = textarea.value.toLowerCase();
+            let response = getResponse(question);
 
-setTimeout("showChatBot()", 10000);
+            displayMessage(`You: ${question}`);
+            displayMessage(`Bot: ${response}`);
 
-function openForm() {
-  document.getElementById("Chatbot-Form").style.display = "block";
-}
+            textarea.value = ''; // Clear the textarea after the response is displayed
+        }
 
-function closeForm() {
-  document.getElementById("Chatbot-Form").style.display = "none";
-}
+        function getResponse(question) {
+            if (/what are your opening hours|library hours/.test(question)) {
+                return "Our library is open from 9 AM to 8 PM on weekdays, and from 10 AM to 5 PM on weekends.";
+            } else if (/how long can i borrow a book|borrowing policies/.test(question)) {
+                return "Books can be borrowed for two weeks at a time. Renewals are allowed once unless there's a hold.";
+            } else if (/what are the late fees|overdue books/.test(question)) {
+                return "Late fees are $0.25 per day for each book. Fees can accumulate up to the cost of the book.";
+            } else if (/is (.+) available for checkout|book availability/.test(question)) {
+                return `You asked about the availability of a book. Please visit our catalog to search for specific titles.`;
+            } else if (/what events are scheduled|event information/.test(question)) {
+                return "Check our website's event calendar for all scheduled library events, including author talks and workshops.";
+            } else if (/how can i reserve a study room|room reservations/.test(question)) {
+                return "You can reserve a study room online through our website or by calling the front desk.";
+            } else if (/what is the wifi password|wifi access/.test(question)) {
+                return "The Wi-Fi password is 'ReadMoreBooks'. Enjoy your browsing!";
+            } else if (/do you offer help with research|support services/.test(question)) {
+                return "Yes, we offer research support services. Please approach the information desk for assistance.";
+            } else if (/can you recommend a good mystery novel|book recommendations/.test(question)) {
+                return "I recommend 'The Hound of the Baskervilles' by Arthur Conan Doyle, a classic mystery full of suspense.";
+            } else if (/how much does it cost to print documents|printing services/.test(question)) {
+                return "Printing costs $0.10 per black and white page and $0.25 per color page.";
+            } else if (/how can i donate books|donation guidelines/.test(question)) {
+                return "Thank you for considering a donation! Books can be dropped off at the main desk during regular hours.";
+            } else if (/how do i apply for a library card|library cards/.test(question)) {
+                return "You can apply for a library card online or at any of our service desks with a valid ID.";
+            } else if (/can we play a guessing game|play a game/.test(question)) {
+                const randomNumber = Math.floor(Math.random() * 100) + 1;
+                sessionStorage.setItem('gameNumber', randomNumber);
+                return `I'm thinking of a number between 1 and 100. Guess it by typing 'guess' followed by your number!`;
+            } else {
+                return "I'm not sure how to help with that. Here are some questions you can ask me:\n" +
+                    "- What are your opening hours?\n" +
+                    "- How long can I borrow a book?\n" +
+                    "- What are the late fees for overdue books?\n" +
+                    "- Is [book title] available for checkout?\n" +
+                    "- What events are scheduled this month?\n" +
+                    "- How can I reserve a study room?\n" +
+                    "- What is the wifi password?\n" +
+                    "- Do you offer help with research?\n" +
+                    "- Can you recommend a good book?\n" +
+                    "- How much does it cost to print documents?\n" +
+                    "- How can I donate books?\n" +
+                    "- How do I apply for a library card?\n" +
+                    "- Can we play a guessing game?";
+            }
+        }
 
-var x = document.getElementById("myAudio");
+        function displayMessage(message) {
+            const chatArea = document.querySelector('.chat-area');
+            const messageDiv = document.createElement('div');
+            messageDiv.textContent = message;
+            chatArea.appendChild(messageDiv);
+            chatArea.scrollTop = chatArea.scrollHeight; // Scroll to the bottom of the chat area
+        }
 
-function playAudio()
-{
-    const button = document.getElementById("buttonSend");
-    const audio = document.getElementById("notificationButtonSound");
-    
-}
+        function closeForm() {
+            document.getElementById('Chatbot-Form').style.display = 'none';
+        }
 
-function DarkFunction() 
-{
-   var element = document.getElementById("Chatbot-Form");
-   element.classList.toggle("dark-mode");
+        function closeForm() {
+            document.getElementById('Chatbot-Form').style.display = 'none';
+        }
 
-   const darkToggle = document.getElementById('darkToggle');
-   
-}
 
-function LightFunction() 
-{
-   var element = document.getElementById("Chatbot-Form");
-   element.classList.toggle("light-mode");
-}
+        function closeForm() {
+            document.getElementById('Chatbot-Form').style.display = 'none';
+        }
+
+        function closeForm() {
+            document.getElementById('Chatbot-Form').style.display = 'none';
+        }
+
+
+        function showChatBot() {
+
+            document.getElementById("Chatbot-Form").style.display = "block";
+        }
+
+        setTimeout("showChatBot()", 3000);
+
+        function openForm() {
+            document.getElementById("Chatbot-Form").style.display = "block";
+        }
+
+        function closeForm() {
+            document.getElementById("Chatbot-Form").style.display = "none";
+        }
+
+        // var x = document.getElementById("myAudio");
+
+        // function playAudio()
+        // {
+        // const button = document.getElementById("buttonSend");
+        // const audio = document.getElementById("notificationButtonSound");
+
+        // }
+
+        // function DarkFunction()
+        // {
+        // var element = document.getElementById("Chatbot-Form");
+        // element.classList.toggle("dark-mode");
+
+        // const darkToggle = document.getElementById('darkToggle');
+
+        // }
+
+        // function LightFunction()
+        // {
+        // var element = document.getElementById("Chatbot-Form");
+        // element.classList.toggle("light-mode");
+        // }
 
 
         document.querySelectorAll('#delete-btn').forEach(button => {
@@ -552,7 +649,7 @@ function LightFunction()
                     console.error('Error:', error);
                 });
         });
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         document.getElementById('addMetricForm').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent default form submission
 
