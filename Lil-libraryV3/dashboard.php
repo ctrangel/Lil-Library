@@ -468,21 +468,22 @@ include 'actual_bot_logic.php';
                 sessionStorage.setItem('gameNumber', randomNumber);
                 return `I'm thinking of a number between 1 and 100. Guess it by typing 'guess' followed by your number!`;
             } else {
-                return "I'm not sure how to help with that. Here are some questions you can ask me:\n" +
-                    "- What are your opening hours?\n" +
-                    "- How long can I borrow a book?\n" +
-                    "- What are the late fees for overdue books?\n" +
-                    "- Is [book title] available for checkout?\n" +
-                    "- What events are scheduled this month?\n" +
-                    "- How can I reserve a study room?\n" +
-                    "- What is the wifi password?\n" +
-                    "- Do you offer help with research?\n" +
-                    "- Can you recommend a good book?\n" +
-                    "- How much does it cost to print documents?\n" +
-                    "- How can I donate books?\n" +
-                    "- How do I apply for a library card?\n" +
-                    "- Can we play a guessing game?";
+                return "I'm sorry, I don't understand. Here are some topics you can ask me about:\n" +
+                    "- library hours\n" +
+                    "- borrowing policies\n" +
+                    "- overdue books\n" +
+                    "- book availability\n" +
+                    "- Event information\n" +
+                    "- Study room reservations\n" +
+                    "- Wi-Fi access\n" +
+                    "- support services\n" +
+                    "- Book recommendations\n" +
+                    "- Printing services\n" +
+                    "- Donation guidelines\n" +
+                    "- library cards\n" +
+                    "- play a game";
             }
+
         }
 
         function displayMessage(message) {
