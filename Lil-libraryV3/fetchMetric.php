@@ -5,10 +5,15 @@
     <link rel="stylesheet" href="Lil-Library/Lil-libraryV3/styles/styles.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="fetchMetricData.js"></script>
 
 </head>
 
+
+
 <?php
+
+include 'conn.php';
 
 try {
     $pdo = new PDO("pgsql:host=$host;port=$port;dbname=$dbname", $user, $password);
